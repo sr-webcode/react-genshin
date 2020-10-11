@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
+import ReactGA from "react-ga";
 
 const KLEE_BG = "assets/images/klee.png";
 const GENSHIN_HERO = "/assets/images/genshin_img.jpg";
-
 const HERO_WISHLIST = [
   {
     name: "KLEE",
@@ -31,7 +31,6 @@ const HERO_WISHLIST = [
       "https://uploadstatic-sea.mihoyo.com/contentweb/20200316/2020031619530797687.png",
   },
 ];
-
 const StyledOverride = styled.div`
   overflow: hidden;
   background-color: #f3f2f0;
@@ -53,7 +52,6 @@ const StyledOverride = styled.div`
     }
   }
 `;
-
 const StyledBanner = styled.div`
   position: relative;
   overflow: hidden;
@@ -79,6 +77,10 @@ const StyledBanner = styled.div`
   }
 `;
 
+const trackAddedHero = (hero) => {
+  ReactGA.event({ category: "Account", action: `Added Hero : ${hero}` });
+};
+
 const HeroList = () => (
   <div className="mw-1200 mx-auto hero-list-container">
     {
@@ -91,7 +93,12 @@ const HeroList = () => (
                 {hero.name}
               </p>
             </div>
-            <button className="d-block mt-2 p-1 w-100">add this hero</button>
+            <button
+              onClick={() => trackAddedHero(hero.name)}
+              className="d-block mt-2 p-1 w-100"
+            >
+              add this hero
+            </button>
           </li>
         ))}
       </ul>

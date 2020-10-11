@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { withRouter } from "react-router-dom";
 
 import Header from "components/Header";
 
@@ -47,4 +46,4 @@ const HomePage = ({ history }) => {
   );
 };
 
-export default withRouter(HomePage);
+export default HomePage;
