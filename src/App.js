@@ -8,7 +8,7 @@ import WishList from "Pages/WishList";
 const App = ({ history }) => {
   useEffect(() => {
     ReactGA.pageview(history.location.pathname);
-  });
+  }, [history.location.pathname]);
   return (
     <Switch>
       <Route exact path="/" component={HomePage} />
